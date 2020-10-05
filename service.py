@@ -8,7 +8,7 @@ import numpy as np
 from numba import jit
 import estastic
 import searchWithDR
-import lsh
+#import lsh
 import logging
 import database
 from tqdm import tqdm

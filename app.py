@@ -6,7 +6,7 @@ import os
 import estastic
 import searchWithDR
 import annotateDR
-import lsh
+# import lsh
 import logging
 import time
 
@@ -16,6 +16,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 @app.route("/")
 def hello():
+    print("Fino qui tutto ok")
     return render_template("index.html")
 
 
@@ -33,8 +34,8 @@ def collect_query():
     #print(infineonBERT.files_sentence_embeddings[0]['embeddings'][1])
     middle = time.time()
     logging.debug(middle - start)
-    render_data_DR = service.reply_with_Digital_Reference(text, digital_reference_classes_and_names)
-
+    # render_data_DR = service.reply_with_Digital_Reference(text, digital_reference_classes_and_names)
+    render_data_DR = {}
 
     # search for similar vector representations
 
@@ -79,7 +80,7 @@ if __name__ == "__main__":
     infineonBERT = model.InfineonBERT("Infineon search engine")
     print("Sentence BERT loaded.")
 
-    sentences_embeddings, id_vect = infineonBERT.files_sentence_embeddings
+    # sentences_embeddings, id_vect = infineonBERT.files_sentence_embeddings
 
     # connect to Elastic-Search
     # client = estastic.start_client()
@@ -91,10 +92,11 @@ if __name__ == "__main__":
     # logging.debug("Data indexed.")
 
     # laod the ontology
-    onto = searchWithDR.importOntology(searchWithDR.PATH_SAVED_ONTOLOGY)
-    digital_reference_classes_and_names = annotateDR.get_tuple_class_name(onto)
-    logging.debug("Ontology loaded.")
+    # onto = searchWithDR.importOntology(searchWithDR.PATH_SAVED_ONTOLOGY)
+    # digital_reference_classes_and_names = annotateDR.get_tuple_class_name(onto)
+    # logging.debug("Ontology loaded.")
 
     app.config['UPLOAD_FOLDER'] = 'C:/Users/Mottola/Documents/Thesis_local/text_corpus/pdf'
     app.run(debug=True, port=8080, use_reloader=False)
     logging.debug("Started server!")
+

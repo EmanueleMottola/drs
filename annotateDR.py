@@ -87,30 +87,30 @@ def extract_keywords_from_query(query):
     return final_list
 
 
-# import the Digital Reference
-digitalReferenceOntology = importOntology()
-print(digitalReferenceOntology.graph.dump())
-
-# retrieve the classes of the digital reference
-triples = digitalReferenceOntology.get_triples(None, None, None)
-for triple in triples:
-    for el in triple:
-        digitalReferenceOntology._unabbreviate(el)
-
-# get a list of tuples: (the class object, the names from the uri)
-classTuple = getClassName(triples)
-
-# instance of infineonBERT
-infineonBERT = model.InfineonBERT("Infineon search engine")
-
-start = time.time()
-# attach documents to classes
-attachDocumentsToClasses(infineonBERT, classTuple)
-
-
-# print(lambda x: print(x.comment) for x in getClasses(digitalReferenceOntology))
-print("Time needed to annotate all the classes: {}".format(time.time() - start))
-
-# save the ontology to file with RDF/XML format
-with open(PATH_SAVED_ONTOLOGY, "wb") as fp:
-   digitalReferenceOntology.save(file=fp)
+# # import the Digital Reference
+# digitalReferenceOntology = importOntology()
+# print(digitalReferenceOntology.graph.dump())
+#
+# # retrieve the classes of the digital reference
+# triples = digitalReferenceOntology.get_triples(None, None, None)
+# for triple in triples:
+#     for el in triple:
+#         digitalReferenceOntology._unabbreviate(el)
+#
+# # get a list of tuples: (the class object, the names from the uri)
+# classTuple = getClassName(triples)
+#
+# # instance of infineonBERT
+# infineonBERT = model.InfineonBERT("Infineon search engine")
+#
+# start = time.time()
+# # attach documents to classes
+# attachDocumentsToClasses(infineonBERT, classTuple)
+#
+#
+# # print(lambda x: print(x.comment) for x in getClasses(digitalReferenceOntology))
+# print("Time needed to annotate all the classes: {}".format(time.time() - start))
+#
+# # save the ontology to file with RDF/XML format
+# with open(PATH_SAVED_ONTOLOGY, "wb") as fp:
+#    digitalReferenceOntology.save(file=fp)

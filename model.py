@@ -19,7 +19,7 @@ class InfineonBERT:
         self.PATH_TO_SENTENCE_TRANSFORMER = 'C:/Users/Mottola/Documents/InfineonSearchEngine/infineonSentenceBERT'
         self.PICKLE_DATA_JSON = 'C:/Users/Mottola/Documents/InfineonSearchEngine/sentence_embeddings.pickle'
         self.PATH_TO_PDFs = 'C:/Users/Mottola/Documents/Thesis_local/text_corpus/pdf'
-        self.files_sentence_embeddings = self.load_embeddings()
+        # self.files_sentence_embeddings = self.load_embeddings()
         '''[{
             "text": "eccolo",
             "title": "sticazzi",
@@ -66,6 +66,6 @@ class InfineonBERT:
 
     def load_Sentence_Transformer(self):
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        model = SentenceTransformer(self.PATH_TO_SENTENCE_TRANSFORMER)
+        model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
         model.to(device)
         return model
