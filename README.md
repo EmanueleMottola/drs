@@ -5,7 +5,7 @@ It exploits state-of-the-art NLP techniques to find semantically similar sentenc
 and documents they belong to.
 
 The web application computes the *cosine similarity* between the query and all the sentences 
-of the documents, ranking the results accordingly. It 
+of the documents, ranking the results accordingly.
 
 
 # Reference
