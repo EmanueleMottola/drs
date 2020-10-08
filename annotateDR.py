@@ -101,7 +101,7 @@ def extract_keywords_from_query(query):
 # classTuple = getClassName(triples)
 #
 # # instance of infineonBERT
-# infineonBERT = model.InfineonBERT("Infineon search engine")
+# infineonBERT = model.drsBERT("Infineon search engine")
 #
 # start = time.time()
 # # attach documents to classes

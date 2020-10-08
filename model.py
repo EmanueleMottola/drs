@@ -1,6 +1,6 @@
 
 ############################################
-# Creation of the class InfineonBERT
+# Creation of the class drsBERT
 ############################################
 import pickle
 from sentence_transformers import SentenceTransformer
@@ -13,7 +13,7 @@ import scipy
 logging.basicConfig(level=logging.DEBUG)
 
 
-class InfineonBERT:
+class drsBERT:
     def __init__(self, name):
         self.name = name
         self.PATH_TO_SENTENCE_TRANSFORMER = 'C:/Users/Mottola/Documents/InfineonSearchEngine/infineonSentenceBERT'

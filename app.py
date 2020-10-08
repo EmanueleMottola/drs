@@ -77,7 +77,7 @@ if __name__ == "__main__":
     # load Sentence-BERT
 
     logging.debug("Sentence BERT loading..")
-    infineonBERT = model.InfineonBERT("Infineon search engine")
+    infineonBERT = model.drsBERT("Infineon search engine")
     print("Sentence BERT loaded.")
 
     # sentences_embeddings, id_vect = infineonBERT.files_sentence_embeddings

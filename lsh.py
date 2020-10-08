@@ -12,7 +12,7 @@ from tqdm import tqdm
 logging.basicConfig(level=logging.DEBUG)
 
 # print("loading model..")
-# infineonBERT = model.InfineonBERT("Infineon search engine")
+# infineonBERT = model.drsBERT("Infineon search engine")
 #
 #
 # print("loading nearpy..")

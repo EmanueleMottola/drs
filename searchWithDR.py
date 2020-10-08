@@ -172,7 +172,7 @@ def search_class_annotations(keyword, digital_reference_classes_and_names):
     print(queries)
 
     # load model and connect to elasticsearch
-    infineonBERT = model.InfineonBERT("Infineon search engine")
+    infineonBERT = model.drsBERT("Infineon search engine")
     client = estastic.start_client()
 
     for (entity, text) in queries:
