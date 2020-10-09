@@ -8,7 +8,7 @@ PATH_TO_PICKLE_DATA = 'C:/Users/Mottola/Documents/InfineonSearchEngine/sentence_
 logging.basicConfig(level=logging.DEBUG)
 
 def connect():
-    conn = psycopg2.connect(host="localhost", database="search_engine", user="postgres", password="postgres")
+    conn = psycopg2.connect(host="localhost", database="cord-19", user="postgres", password="postgres")
     return conn
 
 def create_tables():
@@ -20,9 +20,8 @@ def create_tables():
         commands = (
             """
                 CREATE TABLE documents (
-                doc_id SERIAL PRIMARY KEY,
+                paper_id SERIAL PRIMARY KEY,
                 title VARCHAR(65535) NOT NULL,
-                hook VARCHAR(65535) NOT NULL,
                 document BYTEA
             )
             """,
@@ -31,16 +30,10 @@ def create_tables():
                 sentence_id SERIAL PRIMARY KEY,
                 sentence VARCHAR(65535) NOT NULL,
                 embedding float[] NOT NULL,
-                doc_id INTEGER NOT NULL,
-                FOREIGN KEY (doc_id)
-                        REFERENCES documents (doc_id)
+                paper_id INTEGER NOT NULL,
+                FOREIGN KEY (paper_id)
+                        REFERENCES documents (paper_id)
                         ON UPDATE CASCADE ON DELETE CASCADE
-            )
-            """,
-            """
-                CREATE TABLE pickle (
-                pickle_id INTEGER PRIMARY KEY,
-                pickle_file BYTEA
             )
             """
         )

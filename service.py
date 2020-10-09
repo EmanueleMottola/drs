@@ -13,13 +13,13 @@ import logging
 import database
 from tqdm import tqdm
 import time
+import model
 
 logging.basicConfig(level=logging.DEBUG)
 NUM_THREADS = 1
 NUM_DOCUMENTS = int(50 / NUM_THREADS)
 
-def convert_query_to_embedding_Sentence_BERT(model, query):
-    return model.encode(query, show_progress_bar=False)
+
 
 
 def search(queries, query_embeds, files_converted):
@@ -184,8 +184,8 @@ def compute_all_cos_dist(query_embed, embeddings):
 # def reply_with_sentence_BERT(infineonBERT, text, engine):
 def reply_with_sentence_BERT(infineonBERT, text, sentences_embedings, id_vect):
 
-    #query embeddig
-    list_query_embeds = convert_query_to_embedding_Sentence_BERT(infineonBERT.encoder, [text])
+    #query embedding
+    list_query_embeds = model.convert_query_to_embedding(infineonBERT.encoder, [text])
     # render_data = estastic.search(client, list_query_embeds[0])
     # render_data = lsh.search_with_LSH(engine, list_query_embeds)
 

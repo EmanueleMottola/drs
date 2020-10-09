@@ -27,7 +27,7 @@ def collect_query():
 
     # the text is converted to vector
     start = time.time()
-    render_data_SBERT = service.reply_with_sentence_BERT(infineonBERT, text, sentences_embeddings, id_vect)
+    render_data_SBERT = service.reply_with_sentence_BERT(drsBERT, text, sentences_embeddings, id_vect)
     # render_data_SBERT = service.reply_with_sentence_BERT(infineonBERT, text, engine) # engine <> client
     # list_query_embeds = service.convert_query_to_embedding_Sentence_BERT(infineonBERT.encoder, [text])
     #print(np.shape(list_query_embeds[0]))
@@ -77,10 +77,10 @@ if __name__ == "__main__":
     # load Sentence-BERT
 
     logging.debug("Sentence BERT loading..")
-    infineonBERT = model.drsBERT("Infineon search engine")
+    drsBERT = model.drsBERT()
     print("Sentence BERT loaded.")
 
-    # sentences_embeddings, id_vect = infineonBERT.files_sentence_embeddings
+    #sentences_embeddings, id_vect = drsBERT.files_sentence_embeddings
 
     # connect to Elastic-Search
     # client = estastic.start_client()
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     # engine = lsh.create_LSH_index_step()
     # logging.debug("Data indexed.")
 
-    # laod the ontology
+    # load the ontology
     # onto = searchWithDR.importOntology(searchWithDR.PATH_SAVED_ONTOLOGY)
     # digital_reference_classes_and_names = annotateDR.get_tuple_class_name(onto)
     # logging.debug("Ontology loaded.")
