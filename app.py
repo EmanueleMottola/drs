@@ -28,32 +28,21 @@ def collect_query():
     # the text is converted to vector
     start = time.time()
     render_data_SBERT = service.reply_with_sentence_BERT(drsBERT, text, sentences_embeddings, id_vect)
-    # render_data_SBERT = service.reply_with_sentence_BERT(infineonBERT, text, engine) # engine <> client
-    # list_query_embeds = service.convert_query_to_embedding_Sentence_BERT(infineonBERT.encoder, [text])
-    #print(np.shape(list_query_embeds[0]))
-    #print(infineonBERT.files_sentence_embeddings[0]['embeddings'][1])
+
     middle = time.time()
     logging.debug(middle - start)
+
     # render_data_DR = service.reply_with_Digital_Reference(text, digital_reference_classes_and_names)
     render_data_DR = {}
-
-    # search for similar vector representations
-
-    # render_data = service.search(text, list_query_embeds, infineonBERT.files_sentence_embeddings)
-    # render_data = service.multiprocess_search(text, list_query_embeds, infineonBERT.files_sentence_embeddings)
-    #render_data = estastic.search(client, list_query_embeds[0])
 
     finish = time.time()
 
     logging.debug(finish-start)
-    #print("Time to convert: " + str(middle-start))
-    #print("Time to search: " + str(finish-middle))
 
-    # create a json to return it as application/json
+    # create a json toy return it as application/json
     render_data = {'sbert': render_data_SBERT, 'dr': render_data_DR}
-    # print(render_data)
+
     result = {'results': render_data}
-    #print(render_data_DR)
     return result
 
 
